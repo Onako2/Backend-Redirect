@@ -68,7 +68,7 @@ public class BackendRedirect {
         }
         server.getEventManager().register(this, new ServerPreConnectListener());
 
-        int pluginId = 22618; // <-- Replace with the id of your plugin!
+        int pluginId = 22620; // <-- Replace with the id of your plugin!
         Metrics metrics = metricsFactory.make(this, pluginId);
 
         logger.info("Loaded Backend-Redirect");
