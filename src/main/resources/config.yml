@@ -1,0 +1,6 @@
+# Config for velocity auto redirect
+#
+# The target server must be reachable from outside the proxy and should optionally be on online-mode
+# "server_name": "host:port"
+servers:
+  - "yourfriendsserver": "example.com:25566"
