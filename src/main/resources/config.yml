@@ -2,5 +2,8 @@
 #
 # The target server must be reachable from outside the proxy and should optionally be on online-mode
 # "server_name": "host:port"
+# /server <server_name> -> Redirects the player to the target server
+# Compatible with BungeeCord Plugin Messaging Channel
+
 servers:
   - "yourfriendsserver": "example.com:25566"
