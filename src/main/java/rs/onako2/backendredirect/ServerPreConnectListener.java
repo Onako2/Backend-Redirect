@@ -19,6 +19,9 @@ public class ServerPreConnectListener {
         } else if (serverConfig instanceof List) {
             try {
                 List<Map<String, String>> serverList = (List<Map<String, String>>) serverConfig;
+                if (serverList.isEmpty()) {
+                    logger.error("server list config is empty, check your config!");
+                }
                 for (Map<String, String> serverMap : serverList) {
                     handleServerRedirection(event, serverMap);
                 }
@@ -32,6 +35,7 @@ public class ServerPreConnectListener {
 
     private void handleServerRedirection(ServerPreConnectEvent event, Map<String, String> serverMap) {
         if (event.getOriginalServer() != null) {
+            logger.debug("Original: {}", event.getOriginalServer().getServerInfo().toString());
             String server = event.getOriginalServer().getServerInfo().getName();
             String serverAddress = serverMap.get(server);
             if (serverAddress != null) {
@@ -39,7 +43,12 @@ public class ServerPreConnectListener {
                 String host = serverAddressParts[0];
                 int port = Integer.parseInt(serverAddressParts[1]);
                 event.getPlayer().transferToHost(InetSocketAddress.createUnresolved(host, port));
+            } else {
+                logger.debug("No server address! No redirection!");
             }
+        }
+        if (event.getPreviousServer() != null) {
+            logger.debug("Previous: {}", event.getPreviousServer().getServerInfo().toString());
         }
     }
 }

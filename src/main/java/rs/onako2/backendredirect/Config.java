@@ -22,7 +22,12 @@ public class Config {
             if (config == null) {
                 config = Files.readString(configPath);
             }
+            if (config.isBlank()) {
+                logger.error("Config is blank? This is strange!");
+                return null;
+            }
             Map<String, Object> obj = yaml.load(config);
+            if (obj == null) return null;
             return obj.get(input);
         } catch (IOException e) {
             logger.error("Failed to load config.yml from {}", dataDirectory, e);
