@@ -31,7 +31,7 @@ public class ServerPreConnectListener {
     }
 
     private void handleServerRedirection(ServerPreConnectEvent event, Map<String, String> serverMap) {
-        if (event.getPreviousServer() != null) {
+        if (event.getOriginalServer() != null) {
             String server = event.getOriginalServer().getServerInfo().getName();
             String serverAddress = serverMap.get(server);
             if (serverAddress != null) {
