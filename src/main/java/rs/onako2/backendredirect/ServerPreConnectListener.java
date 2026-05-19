@@ -40,8 +40,6 @@ public class ServerPreConnectListener {
                 int port = Integer.parseInt(serverAddressParts[1]);
                 event.getPlayer().transferToHost(InetSocketAddress.createUnresolved(host, port));
             }
-        } else {
-            logger.error("Couldn't get the next server for player " + event.getPlayer().getUsername());
         }
     }
 }

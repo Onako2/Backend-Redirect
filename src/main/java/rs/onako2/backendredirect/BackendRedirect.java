@@ -48,7 +48,7 @@ public class BackendRedirect {
             try {
                 Files.createDirectories(dataDirectory);
             } catch (IOException e) {
-                logger.error("Failed to create directory " + dataDirectory, e);
+                logger.error("Failed to create directory {}", dataDirectory, e);
                 return;
             }
         }
